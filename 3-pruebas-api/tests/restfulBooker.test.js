@@ -11,7 +11,7 @@ describe('Pruebas de API con Supertest y Vitest - Restful Booker', () => {
   // CASOS BASE (1 por cada integrante)
   // ==========================================
 
-  it('Caso Base 1 (Integrante 1 - Juan Pérez): Generar token de autenticación (POST /auth)', async () => {
+  it('Caso Base 1 (Integrante 1 - Santiago Escalante): Generar token de autenticación (POST /auth)', async () => {
     const response = await request(BASE_URL)
       .post('/auth')
       .send({
@@ -28,7 +28,7 @@ describe('Pruebas de API con Supertest y Vitest - Restful Booker', () => {
     authToken = response.body.token;
   });
 
-  it('Caso Base 2 (Integrante 2 - María Gómez): Crear una nueva reserva (POST /booking)', async () => {
+  it('Caso Base 2 (Integrante 2 - Anthony Llerena): Crear una nueva reserva (POST /booking)', async () => {
     const newBooking = {
       firstname: 'ESAN',
       lastname: 'Software Testing',
@@ -56,7 +56,7 @@ describe('Pruebas de API con Supertest y Vitest - Restful Booker', () => {
     createdBookingId = response.body.bookingid;
   });
 
-  it('Caso Base 3 (Integrante 3 - Carlos Ruiz): Obtener detalles de una reserva por ID (GET /booking/:id)', async () => {
+  it('Caso Base 3 (Integrante 3 - Kevin Quispe): Obtener detalles de una reserva por ID (GET /booking/:id)', async () => {
     // Si no se creó una reserva en el test anterior por algún error de red, usamos un ID estático común (como 1 o 2)
     const testId = createdBookingId || 2;
 

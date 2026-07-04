@@ -7,7 +7,7 @@ const randomPassword = 'password123';
 
 test.describe('Pruebas Web con Playwright - DemoBlaze', () => {
 
-  test('Caso Base 1 (Integrante 1 - Juan Pérez): Navegar a Laptops, seleccionar una y verificar detalles', async ({ page }) => {
+  test('Caso Base 1 (Integrante 1 - Santiago Escalante): Navegar a Laptops, seleccionar una y verificar detalles', async ({ page }) => {
     // 1. Ir a la página de inicio
     await page.goto('/');
     
@@ -28,7 +28,7 @@ test.describe('Pruebas Web con Playwright - DemoBlaze', () => {
     await expect(page.locator('.price-container')).toBeVisible();
   });
 
-  test('Caso Base 2 (Integrante 2 - María Gómez): Agregar Laptop al carrito y aceptar alerta de confirmación', async ({ page }) => {
+  test('Caso Base 2 (Integrante 2 - Anthony Llerena): Agregar Laptop al carrito y aceptar alerta de confirmación', async ({ page }) => {
     // 1. Ir directamente a una laptop específica (ej. Sony vaio i5)
     await page.goto('/prod.html?idp_=8');
     
@@ -48,7 +48,7 @@ test.describe('Pruebas Web con Playwright - DemoBlaze', () => {
     expect(dialogMessage).toContain('Product added');
   });
 
-  test('Caso Base 3 (Integrante 3 - Carlos Ruiz): Registro de nuevo usuario (Sign Up)', async ({ page }) => {
+  test('Caso Base 3 (Integrante 3 - Kevin Quispe): Registro de nuevo usuario (Sign Up)', async ({ page }) => {
     await page.goto('/');
     
     // 1. Abrir modal de Registro

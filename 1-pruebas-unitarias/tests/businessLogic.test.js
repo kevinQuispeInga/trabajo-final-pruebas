@@ -8,14 +8,14 @@ describe('Pruebas Unitarias de Lógica de Negocio', () => {
   // CASOS BASE (1 por cada integrante)
   // ==========================================
 
-  it('Caso Base 1 (Integrante 1 - Juan Pérez): Cálculo de IGV de un carrito básico', () => {
+  it('Caso Base 1 (Integrante 1 - Santiago Escalante): Cálculo de IGV de un carrito básico', () => {
     // Escenario: Un carrito con total de S/ 100.00 debe calcular exactamente 18% de IGV (S/ 18.00).
     const amount = 100;
     const igv = calculateIGV(amount);
     expect(igv).toBe(18.00);
   });
 
-  it('Caso Base 2 (Integrante 2 - María Gómez): Validación de rango de fechas de reserva correctas', () => {
+  it('Caso Base 2 (Integrante 2 - Anthony Llerena): Validación de rango de fechas de reserva correctas', () => {
     // Escenario: Reservas en el futuro (hoy es julio 2026).
     // Usamos fechas del 2026 y 2027 para garantizar que no estén en el pasado.
     const start = '2026-10-10';
@@ -24,7 +24,7 @@ describe('Pruebas Unitarias de Lógica de Negocio', () => {
     expect(isValid).toBe(true);
   });
 
-  it('Caso Base 3 (Integrante 3 - Carlos Ruiz): Cálculo correcto de noches de reserva', () => {
+  it('Caso Base 3 (Integrante 3 - Kevin Quispe): Cálculo correcto de noches de reserva', () => {
     // Escenario: Reserva de 5 noches
     const start = '2026-11-01';
     const end = '2026-11-06';

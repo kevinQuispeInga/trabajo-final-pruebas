@@ -1,6 +1,6 @@
 appId: com.example.fliptronics
 ---
-# Caso Base 1 (Integrante 1 - Juan Pérez): Navegar por categorías y ver producto
+# Caso Base 1 (Integrante 1 - Santiago Escalante): Navegar por categorías y ver producto
 - launchApp
 
 # Esperar a que la pantalla de inicio cargue

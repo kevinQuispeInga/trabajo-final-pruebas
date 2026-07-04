@@ -1,6 +1,6 @@
 appId: com.example.fliptronics
 ---
-# Caso Base 2 (Integrante 2 - María Gómez): Buscar producto en la tienda
+# Caso Base 2 (Integrante 2 - Anthony Llerena): Buscar producto en la tienda
 - launchApp
 
 # Esperar a que la pantalla de inicio cargue

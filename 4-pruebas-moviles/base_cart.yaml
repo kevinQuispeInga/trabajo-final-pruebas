@@ -1,6 +1,6 @@
 appId: com.example.fliptronics
 ---
-# Caso Base 3 (Integrante 3 - Carlos Ruiz): Agregar producto al carrito de compras
+# Caso Base 3 (Integrante 3 - Kevin Quispe): Agregar producto al carrito de compras
 - launchApp
 
 # Esperar pantalla de inicio

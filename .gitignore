@@ -1,0 +1,25 @@
+# Dependencias
+node_modules/
+**/node_modules/
+
+# Resultados de pruebas y reportes
+test-results/
+**/test-results/
+playwright-report/
+**/playwright-report/
+blob-report/
+**/blob-report/
+.playwright/
+**/.playwright/
+artillery-results.json
+
+# Archivos temporales e IDEs
+.DS_Store
+temp_report.html
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?

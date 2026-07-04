@@ -1,0 +1,31 @@
+appId: com.example.fliptronics
+---
+# Caso IA 1: Flujo de checkout completo en Fliptronics
+- launchApp
+
+# 1. Agregar un producto al carrito
+- tapOn: "MacBook Pro"
+- tapOn: "Add to Cart"
+- tapOn: "Cart"
+
+# 2. Iniciar el proceso de compra
+- tapOn: "Checkout"
+- assertVisible: "Shipping Information"
+
+# 3. Llenar los datos de envío
+- tapOn: "Full Name"
+- inputText: "Estudiante ESAN"
+- tapOn: "Address"
+- inputText: "Av. Alonso de Molina 1652, Surco"
+- tapOn: "Phone Number"
+- inputText: "987654321"
+- tapOn: "Email"
+- inputText: "estudiante@esan.edu.pe"
+
+# 4. Confirmar y realizar el pago
+- tapOn: "Place Order"
+
+# 5. Verificar mensaje de confirmación
+- waitForAnimationToEnd
+- assertVisible: "Order Confirmed!"
+- assertVisible: "Thank you for your purchase!"

@@ -1,0 +1,15 @@
+{
+  "name": "2-pruebas-web",
+  "version": "1.0.0",
+  "description": "Proyecto independiente para automatización de pruebas web con Playwright",
+  "type": "module",
+  "scripts": {
+    "test": "playwright test"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.44.0"
+  },
+  "dependencies": {
+    "marked": "^18.0.5"
+  }
+}

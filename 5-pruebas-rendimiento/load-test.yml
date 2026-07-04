@@ -1,0 +1,38 @@
+config:
+  target: "https://restful-booker.herokuapp.com"
+  phases:
+    - duration: 20
+      arrivalRate: 2
+      name: "Fase de Calentamiento (Warm-up)"
+    - duration: 30
+      arrivalRate: 2
+      rampTo: 10
+      name: "Fase de Crecimiento (Ramp-up)"
+    - duration: 30
+      arrivalRate: 10
+      name: "Fase de Carga Sostenida (Cruise)"
+  defaults:
+    headers:
+      Content-Type: "application/json"
+      Accept: "application/json"
+
+scenarios:
+  - name: "Flujo de consulta y creación de reservas"
+    flow:
+      # 1. Obtener la lista general de reservas
+      - get:
+          url: "/booking"
+      - think: 1 # Pensar por 1 segundo
+      
+      # 2. Crear una reserva de prueba
+      - post:
+          url: "/booking"
+          json:
+            firstname: "Load"
+            lastname: "StressTest"
+            totalprice: 120
+            depositpaid: true
+            bookingdates:
+              checkin: "2026-12-15"
+              checkout: "2026-12-20"
+            additionalneeds: "None"

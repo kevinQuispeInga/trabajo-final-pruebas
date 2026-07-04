@@ -1,0 +1,21 @@
+appId: com.example.fliptronics
+---
+# Caso Base 3 (Integrante 3 - Carlos Ruiz): Agregar producto al carrito de compras
+- launchApp
+
+# Esperar pantalla de inicio
+- assertVisible: "Fliptronics"
+
+# Ir directamente a un producto destacado
+- tapOn: "Sony Headphones"
+- assertVisible: "Product Details"
+
+# Agregar al carrito
+- tapOn: "Add to Cart"
+- assertVisible: "Added to Cart"
+
+# Ir a la pestaña del carrito
+- tapOn: "Cart"
+- assertVisible: "Your Cart"
+- assertVisible: "Sony Headphones"
+- assertVisible: "Quantity: 1"

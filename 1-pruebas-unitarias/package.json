@@ -1,0 +1,13 @@
+{
+  "name": "1-pruebas-unitarias",
+  "version": "1.0.0",
+  "description": "Proyecto independiente de pruebas unitarias locales utilizando Vitest",
+  "main": "src/index.js",
+  "type": "module",
+  "scripts": {
+    "test": "vitest run"
+  },
+  "devDependencies": {
+    "vitest": "^1.6.0"
+  }
+}

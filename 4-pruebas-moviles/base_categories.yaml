@@ -1,0 +1,20 @@
+appId: com.example.fliptronics
+---
+# Caso Base 1 (Integrante 1 - Juan Pérez): Navegar por categorías y ver producto
+- launchApp
+
+# Esperar a que la pantalla de inicio cargue
+- assertVisible: "Fliptronics"
+
+# Navegar a la sección de categorías
+- tapOn: "Categories"
+- waitForAnimationToEnd
+
+# Seleccionar la categoría 'Laptops'
+- tapOn: "Laptops"
+- assertVisible: "Laptops List"
+
+# Seleccionar el primer producto
+- tapOn: "MacBook Pro"
+- assertVisible: "Product Details"
+- assertVisible: "$1299.99"

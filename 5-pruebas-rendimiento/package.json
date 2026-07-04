@@ -1,0 +1,12 @@
+{
+  "name": "5-pruebas-rendimiento",
+  "version": "1.0.0",
+  "description": "Proyecto independiente para pruebas de rendimiento utilizando Artillery",
+  "type": "module",
+  "scripts": {
+    "test": "artillery run load-test.yml"
+  },
+  "devDependencies": {
+    "artillery": "^2.0.19"
+  }
+}

@@ -5,9 +5,9 @@ Este repositorio centraliza el proyecto final para el curso de **Prueba de Softw
 ---
 
 ## Integrantes del Grupo:
-1. **Juan Pérez** (Código: 20231045)
-2. **María Gómez** (Código: 20231267)
-3. **Carlos Ruiz** (Código: 20231548)
+1. **ESCALANTE CARRION SANTIAGO** (Código: 19100266)
+2. **LLERENA CABRERA ANTHONY PAOLO** (Código: 23100548)
+3. **QUISPE INGA KEVIN HENRY** (Código: 23200068)
 
 ---
 

@@ -5,9 +5,9 @@
 ---
 
 ### INTEGRANTES DEL GRUPO:
-1. **Juan Pérez** (Código: 20231045)
-2. **María Gómez** (Código: 20231267)
-3. **Carlos Ruiz** (Código: 20231548)
+1. **ESCALANTE CARRION SANTIAGO** (Código: 19100266)
+2. **LLERENA CABRERA ANTHONY PAOLO** (Código: 23100548)
+3. **QUISPE INGA KEVIN HENRY** (Código: 23200068)
 
 ---
 
@@ -144,7 +144,7 @@ Las 8 pruebas unitarias fueron ejecutadas de forma local exitosamente con Vitest
 ```
 
 #### Links a Videos:
-* [Video: Ejecución de Pruebas Unitarias con Vitest (Juan Pérez, María Gómez, Carlos Ruiz)](https://youtube.com/placeholder_unit_tests)
+* [Video: Ejecución de Pruebas Unitarias con Vitest (Santiago Escalante, Anthony Llerena, Kevin Quispe)](https://youtube.com/placeholder_unit_tests)
 
 #### Reflexión del uso de la IA en Pruebas Unitarias:
 La IA actuó como un multiplicador de la cobertura de pruebas al sugerir de forma proactiva casos de pruebas para entradas que los desarrolladores suelen omitir (como el manejo de precios negativos o fechas de reserva lógicamente contradictorias). Esto nos ayudó a comprender mejor la importancia de blindar la lógica de negocio antes de integrarla con bases de datos o servicios externos, construyendo conocimiento acerca del "Defensive Programming" y el diseño de pruebas robustas ante fallos lógicos.
@@ -230,7 +230,7 @@ El uso de la IA en estas fases nos permitió acelerar el desarrollo del "wait-st
 ### 8.4 Defectos (Bugs) Registrados en Qase.io
 A continuación, se detallan los 3 defectos encontrados por el equipo de control de calidad:
 
-#### Defecto 1 (Integrante 1 - Juan Pérez): Inconsistencia de Actualización de Carrito en DemoBlaze
+#### Defecto 1 (Integrante 1 - Santiago Escalante): Inconsistencia de Actualización de Carrito en DemoBlaze
 * **ID en Qase:** BUG-001
 * **Severidad:** Media
 * **Descripción:** Al agregar un producto al carrito y aceptar la alerta emergente, el contador gráfico del carrito no se actualiza inmediatamente. Requiere refrescar la ventana (`F5`) para mostrar el número correcto de artículos.
@@ -244,7 +244,7 @@ A continuación, se detallan los 3 defectos encontrados por el equipo de control
 * **Resultado Obtenido:** El contador muestra vacío o el valor anterior hasta recargar la página.
 * [Video de Evidencia Defecto 1](https://youtube.com/placeholder_bug_1)
 
-#### Defecto 2 (Integrante 2 - María Gómez): Falta de Validación de Fechas en PUT /booking de Restful-Booker
+#### Defecto 2 (Integrante 2 - Anthony Llerena): Falta de Validación de Fechas en PUT /booking de Restful-Booker
 * **ID en Qase:** BUG-002
 * **Severidad:** Alta
 * **Descripción:** La API permite la actualización de una reserva (`PUT /booking/:id`) configurando una fecha de salida (check-out) anterior a la fecha de entrada (check-in), lo cual genera datos de reservas inconsistentes en la base de datos.
@@ -256,7 +256,7 @@ A continuación, se detallan los 3 defectos encontrados por el equipo de control
 * **Resultado Obtenido:** HTTP 200 OK guardando la fecha inválida de salida en el pasado del check-in.
 * [Video de Evidencia Defecto 2](https://youtube.com/placeholder_bug_2)
 
-#### Defecto 3 (Integrante 3 - Carlos Ruiz): Cierre Inesperado de App Fliptronics con Búsqueda Vacía
+#### Defecto 3 (Integrante 3 - Kevin Quispe): Cierre Inesperado de App Fliptronics con Búsqueda Vacía
 * **ID en Qase:** BUG-003
 * **Severidad:** Alta (Crash)
 * **Descripción:** En la aplicación móvil Fliptronics, al realizar una búsqueda dejando la caja de texto completamente vacía y presionando el botón "Enter" del teclado del emulador, la aplicación se congela y se cierra de forma inesperada (Crash).

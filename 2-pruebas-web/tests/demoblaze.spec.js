@@ -134,7 +134,7 @@ test.describe('Pruebas Web con Playwright - DemoBlaze', () => {
 
     await page.click('a:has-text("Add to cart")');
     await page.waitForTimeout(1000);
-    expect(dialogMessage).toContain('Product added');
+    expect(dialogMessage ).toContain('Product added');
 
     // 4. Navegar a la pestaña Cart
     await page.click('#cartur');

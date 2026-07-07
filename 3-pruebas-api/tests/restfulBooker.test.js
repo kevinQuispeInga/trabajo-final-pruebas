@@ -70,6 +70,43 @@ describe('Pruebas de API con Supertest y Vitest - Restful Booker', () => {
     expect(response.body).toHaveProperty('bookingdates');
   });
 
+  it('Caso IA 2: Crear reserva y filtrarla por nombre y apellido con GET /booking', async () => {
+    const newBooking = {
+      firstname: 'QA',
+      lastname: 'Testing',
+      totalprice: 120,
+      depositpaid: true,
+      bookingdates: {
+        checkin: '2026-07-08',
+        checkout: '2026-07-10'
+      },
+      additionalneeds: 'WiFi'
+    };
+
+    const createResponse = await request(BASE_URL)
+      .post('/booking')
+      .send(newBooking)
+      .set('Accept', 'application/json');
+
+    expect(createResponse.status).toBe(200);
+    expect(createResponse.body).toHaveProperty('bookingid');
+
+    const createdBookingId = createResponse.body.bookingid;
+
+    const getResponse = await request(BASE_URL)
+      .get('/booking')
+      .query({ firstname: 'QA', lastname: 'Testing' })
+      .set('Accept', 'application/json');
+
+    expect(getResponse.status).toBe(200);
+    expect(Array.isArray(getResponse.body)).toBe(true);
+    expect(getResponse.body).toEqual(
+      expect.arrayContaining([
+        expect.objectContaining({ bookingid: createdBookingId })
+      ])
+    );
+  });
+
   // ==========================================
   // CASO ADICIONAL GENERADO POR IA
   // ==========================================

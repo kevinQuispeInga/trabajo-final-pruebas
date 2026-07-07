@@ -1,31 +1,40 @@
-appId: com.example.fliptronics
+appId: com.example.flutter_catalogue
 ---
 # Caso IA 1: Flujo de checkout completo en Fliptronics
 - launchApp
 
-# 1. Agregar un producto al carrito
-- tapOn: "MacBook Pro"
-- tapOn: "Add to Cart"
-- tapOn: "Cart"
-
-# 2. Iniciar el proceso de compra
-- tapOn: "Checkout"
-- assertVisible: "Shipping Information"
-
-# 3. Llenar los datos de envío
-- tapOn: "Full Name"
-- inputText: "Estudiante ESAN"
-- tapOn: "Address"
-- inputText: "Av. Alonso de Molina 1652, Surco"
-- tapOn: "Phone Number"
-- inputText: "987654321"
-- tapOn: "Email"
+# Iniciar sesión automáticamente
+- tapOn: "Username"
 - inputText: "estudiante@esan.edu.pe"
-
-# 4. Confirmar y realizar el pago
-- tapOn: "Place Order"
-
-# 5. Verificar mensaje de confirmación
+- pressKey: Enter
+- tapOn: "Password"
 - waitForAnimationToEnd
-- assertVisible: "Order Confirmed!"
-- assertVisible: "Thank you for your purchase!"
+- inputText: "password123"
+- pressKey: Enter
+- tapOn: "Login"
+- waitForAnimationToEnd
+
+# Esperar pantalla de inicio
+- assertVisible: "FlipTronics"
+
+# Esperar a que carguen los productos de la base de datos (esperamos hasta 10 segundos)
+- extendedWaitUntil:
+    visible: ".*iPad Air.*"
+    timeout: 10000
+
+# 1. Entrar al detalle de iPad Air y agregarlo al carrito
+- tapOn: ".*iPad Air.*"
+- waitForAnimationToEnd
+- tapOn:
+    rightOf: "Rs.99999"
+- waitForAnimationToEnd
+
+# 2. Volver e ir al carrito
+- pressKey: Back
+- waitForAnimationToEnd
+- tapOn: "1"
+- waitForAnimationToEnd
+
+# 3. Iniciar el checkout haciendo clic en Place Order
+- assertVisible: "Place Order"
+- tapOn: "Place Order"

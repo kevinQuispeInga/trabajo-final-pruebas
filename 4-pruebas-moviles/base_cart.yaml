@@ -1,21 +1,44 @@
-appId: com.example.fliptronics
+appId: com.example.flutter_catalogue
 ---
 # Caso Base 3 (Integrante 3 - Kevin Quispe): Agregar producto al carrito de compras
 - launchApp
 
+# Iniciar sesión automáticamente
+- tapOn: "Username"
+- inputText: "estudiante@esan.edu.pe"
+- pressKey: Enter
+- tapOn: "Password"
+- waitForAnimationToEnd
+- inputText: "password123"
+- pressKey: Enter
+- tapOn: "Login"
+- waitForAnimationToEnd
+
 # Esperar pantalla de inicio
-- assertVisible: "Fliptronics"
+- assertVisible: "FlipTronics"
 
-# Ir directamente a un producto destacado
-- tapOn: "Sony Headphones"
-- assertVisible: "Product Details"
+# Esperar a que carguen los productos de la base de datos (esperamos hasta 10 segundos)
+- extendedWaitUntil:
+    visible: ".*iPad Air.*"
+    timeout: 10000
 
-# Agregar al carrito
-- tapOn: "Add to Cart"
-- assertVisible: "Added to Cart"
+# Entrar al detalle de iPad Air
+- tapOn: ".*iPad Air.*"
+- waitForAnimationToEnd
 
-# Ir a la pestaña del carrito
-- tapOn: "Cart"
-- assertVisible: "Your Cart"
-- assertVisible: "Sony Headphones"
-- assertVisible: "Quantity: 1"
+# Agregar al carrito (botón al costado del precio)
+- tapOn:
+    rightOf: "Rs.99999"
+- waitForAnimationToEnd
+
+# Volver a la pantalla principal
+- pressKey: Back
+- waitForAnimationToEnd
+
+# Entrar al carrito tocando el badge flotante "1"
+- tapOn: "1"
+- waitForAnimationToEnd
+
+# Verificar que el producto está en el carrito
+- assertVisible: "My Cart"
+- assertVisible: "iPad Air"

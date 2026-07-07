@@ -1,20 +1,50 @@
-appId: com.example.fliptronics
+appId: com.example.flutter_catalogue
 ---
-# Caso Base 2 (Integrante 2 - Anthony Llerena): Buscar producto en la tienda
+# Caso Base 2 (Integrante 2 - Anthony Llerena): Navegación por perfil y búsqueda de producto robusta
 - launchApp
 
-# Esperar a que la pantalla de inicio cargue
-- assertVisible: "Fliptronics"
-
-# Tocar la barra de búsqueda
-- tapOn: "Search products..."
-- inputText: "iPhone 15"
+# Iniciar sesión automáticamente
+- tapOn: "Username"
+- inputText: "estudiante@esan.edu.pe"
 - pressKey: Enter
-
-# Esperar resultados de la búsqueda
+- tapOn: "Password"
 - waitForAnimationToEnd
-- assertVisible: "iPhone 15 Pro Max"
+- inputText: "password123"
+- pressKey: Enter
+- tapOn: "Login"
+- waitForAnimationToEnd
 
-# Seleccionar el producto de los resultados
-- tapOn: "iPhone 15 Pro Max"
-- assertVisible: "Product Details"
+# Esperar a que la pantalla de inicio cargue
+- assertVisible: "FlipTronics"
+
+# 1. Abrir el menú lateral (Drawer) usando su descripción de accesibilidad
+- tapOn: "Open navigation menu"
+- waitForAnimationToEnd
+
+# 2. Verificar datos del creador en el panel lateral y abrir Perfil
+- assertVisible: ".*vansh.sethi98760@gmail.com.*"
+- tapOn: "Profile"
+- waitForAnimationToEnd
+
+# 3. Validar que cargó la pantalla de perfil y regresar al Home
+- assertVisible: ".*Name.*"
+- pressKey: Back
+- waitForAnimationToEnd
+
+# 4. Cerrar el menú lateral tocando la opción "Home"
+- tapOn: "Home"
+- waitForAnimationToEnd
+
+# 5. Deslizar hacia abajo hasta encontrar AirPods (al final de la lista)
+- scrollUntilVisible:
+    element: ".*AirPods.*"
+    direction: DOWN
+    timeout: 30000
+
+# 6. Tocar sobre AirPods para ver sus detalles
+- tapOn: ".*AirPods.*"
+- waitForAnimationToEnd
+
+# 7. Validar los detalles de AirPods en su página
+- assertVisible: "5th Generation"
+- assertVisible: "Rs.14999"

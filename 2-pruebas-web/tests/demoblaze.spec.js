@@ -113,4 +113,42 @@ test.describe('Pruebas Web con Playwright - DemoBlaze', () => {
     await expect(welcomeText).toContainText(`Welcome ${localUser}`, { timeout: 15000 });
   });
 
+  test('Caso IA 2: Agregar una laptop al carrito, verificar en el carrito y luego eliminarla', async ({ page }) => {
+    // 1. Ir a la página de inicio
+    await page.goto('/');
+
+    // 2. Ir a Laptops y hacer clic en la primera laptop
+    await page.click('a:has-text("Laptops")');
+    const laptopLink = page.locator('.card-title a').first();
+    await expect(laptopLink).toBeVisible({ timeout: 10000 });
+    const laptopName = (await laptopLink.innerText()).trim();
+    await laptopLink.click();
+    await expect(page.locator('.name')).toContainText(laptopName, { timeout: 15000 });
+
+    // 3. Aceptar alerta al agregar al carrito
+    let dialogMessage = '';
+    page.on('dialog', async dialog => {
+        dialogMessage = dialog.message();
+        await dialog.accept();
+    });
+
+    await page.click('a:has-text("Add to cart")');
+    await page.waitForTimeout(1000);
+    expect(dialogMessage).toContain('Product added');
+
+    // 4. Navegar a la pestaña Cart
+    await page.click('#cartur');
+    await expect(page.locator('table')).toBeVisible({ timeout: 10000 });
+
+    // 5. Verificar que el producto se haya agregado a la tabla
+    const cartRow = page.locator('tbody tr').filter({ hasText: laptopName });
+    await expect(cartRow).toBeVisible({ timeout: 15000 });
+
+    // 6. Eliminar el producto del carrito
+    await cartRow.locator('a').filter({ hasText: 'Delete' }).click();
+
+    // 7. Validar que el artículo desaparezca de la tabla del cart
+    await expect(page.locator('tbody tr').filter({ hasText: laptopName })).toBeHidden({ timeout: 15000 });
+  });
+
 });

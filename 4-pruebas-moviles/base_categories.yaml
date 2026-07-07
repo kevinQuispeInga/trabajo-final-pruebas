@@ -1,20 +1,31 @@
-appId: com.example.fliptronics
+appId: com.example.flutter_catalogue
 ---
-# Caso Base 1 (Integrante 1 - Santiago Escalante): Navegar por categorías y ver producto
+# Caso Base 1 (Integrante 1 - Santiago Escalante): Navegar por catálogo y ver producto
 - launchApp
 
-# Esperar a que la pantalla de inicio cargue
-- assertVisible: "Fliptronics"
-
-# Navegar a la sección de categorías
-- tapOn: "Categories"
+# Iniciar sesión automáticamente
+- tapOn: "Username"
+- inputText: "estudiante@esan.edu.pe"
+- pressKey: Enter
+- tapOn: "Password"
+- waitForAnimationToEnd
+- inputText: "password123"
+- pressKey: Enter
+- tapOn: "Login"
 - waitForAnimationToEnd
 
-# Seleccionar la categoría 'Laptops'
-- tapOn: "Laptops"
-- assertVisible: "Laptops List"
+# Esperar a que la pantalla de inicio cargue
+- assertVisible: "FlipTronics"
 
-# Seleccionar el primer producto
-- tapOn: "MacBook Pro"
-- assertVisible: "Product Details"
-- assertVisible: "$1299.99"
+# Esperar a que carguen los productos de la base de datos (esperamos hasta 10 segundos)
+- extendedWaitUntil:
+    visible: ".*iPhone 12 Pro.*"
+    timeout: 10000
+
+# Seleccionar el producto iPhone 12 Pro
+- tapOn: ".*iPhone 12 Pro.*"
+- waitForAnimationToEnd
+
+# Verificar que ingresamos al detalle del producto
+- assertVisible: "A14 Chip"
+- assertVisible: "Rs.89999"

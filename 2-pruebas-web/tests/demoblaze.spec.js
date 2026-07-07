@@ -31,17 +31,17 @@ test.describe('Pruebas Web con Playwright - DemoBlaze', () => {
   test('Caso Base 2 (Integrante 2 - Anthony Llerena): Agregar Laptop al carrito y aceptar alerta de confirmación', async ({ page }) => {
     // 1. Ir directamente a una laptop específica (ej. Sony vaio i5)
     await page.goto('/prod.html?idp_=8');
-    
+
     // 2. Escuchar la alerta del navegador (Dialog) y aceptarla automáticamente
     let dialogMessage = '';
     page.on('dialog', async dialog => {
-      dialogMessage = dialog.message();
-      await dialog.accept();
+        dialogMessage = dialog.message();
+        await dialog.accept();
     });
-    
+
     // 3. Hacer clic en "Add to cart"
     await page.click('a:has-text("Add to cart")');
-    
+
     // 4. Verificar que se disparó la alerta con el texto esperado
     // Se da una pequeña espera para que se procese la alerta
     await page.waitForTimeout(2000);

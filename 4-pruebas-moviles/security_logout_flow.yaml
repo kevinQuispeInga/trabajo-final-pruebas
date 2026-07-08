@@ -1,0 +1,33 @@
+appId: com.example.flutter_catalogue
+---
+# Caso de Prueba IA: Flujo de seguridad y cierre de sesión en FlipTronics
+- launchApp
+
+# 1. Iniciar sesión automáticamente con las credenciales robustas
+- tapOn: "Username"
+- inputText: "estudiante@esan.edu.pe"
+- pressKey: Enter
+- tapOn: "Password"
+- waitForAnimationToEnd
+- inputText: "password123"
+- pressKey: Enter
+- tapOn: "Login"
+- waitForAnimationToEnd
+
+# 2. Validar que el Home cargó correctamente
+- assertVisible: "FlipTronics"
+
+# 3. Abrir el menú lateral utilizando la descripción de accesibilidad
+- tapOn: "Open navigation menu"
+- waitForAnimationToEnd
+
+# 4. Verificar que la opción de cierre de sesión está disponible
+- assertVisible: "Sign Out"
+
+# 5. Ejecutar el cierre de sesión
+- tapOn: "Sign Out"
+- waitForAnimationToEnd
+
+# 6. Validar que la sesión se cerró y regresamos a la pantalla de login
+- assertVisible: "Username"
+- assertVisible: "Password"

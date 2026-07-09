@@ -175,4 +175,56 @@ describe('Pruebas de API con Supertest y Vitest - Restful Booker', () => {
 
     expect(getResponse.status).toBe(404);
   });
+
+  it('Caso Defecto 2 (Integrante 2 - Anthony Llerena): Falta de Validación de Fechas en PUT /booking de Restful-Booker (BUG-002)', async () => {
+    // 1. Obtener Token de Autenticación
+    const authResponse = await request(BASE_URL)
+      .post('/auth')
+      .send({
+        username: 'admin',
+        password: 'password123'
+      });
+    const token = authResponse.body.token;
+
+    // 2. Crear una reserva inicial para obtener un ID válido
+    const createResponse = await request(BASE_URL)
+      .post('/booking')
+      .set('Accept', 'application/json')
+      .send({
+        firstname: 'Anthony',
+        lastname: 'Llerena',
+        totalprice: 120,
+        depositpaid: true,
+        bookingdates: {
+          checkin: '2026-10-10',
+          checkout: '2026-10-15'
+        },
+        additionalneeds: 'Ninguna'
+      });
+    
+    const bookingId = createResponse.body.bookingid;
+
+    // 3. Intentar actualizar con fecha de checkout anterior a checkin (Inconsistencia)
+    const response = await request(BASE_URL)
+      .put(`/booking/${bookingId}`)
+      .set('Cookie', `token=${token}`)
+      .set('Accept', 'application/json')
+      .send({
+        firstname: 'Anthony',
+        lastname: 'Llerena',
+        totalprice: 120,
+        depositpaid: true,
+        bookingdates: {
+          checkin: '2026-12-10', // Entrada posterior
+          checkout: '2026-12-01' // Salida anterior
+        },
+        additionalneeds: 'Ninguna'
+      });
+
+    // Validamos que la respuesta es 200 OK (demuestra el defecto BUG-002, ya que debería ser 400 Bad Request)
+    expect(response.status).toBe(200);
+    expect(response.body.bookingdates.checkin).toBe('2026-12-10');
+    expect(response.body.bookingdates.checkout).toBe('2026-12-01');
+  });
+
 });

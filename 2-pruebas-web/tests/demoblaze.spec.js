@@ -151,4 +151,28 @@ test.describe('Pruebas Web con Playwright - DemoBlaze', () => {
     await expect(page.locator('tbody tr').filter({ hasText: laptopName })).toBeHidden({ timeout: 15000 });
   });
 
+  test('Caso Defecto 3 (Integrante 3 - Kevin Quispe): Permitir realizar la compra de un carrito vacío (BUG-003)', async ({ page }) => {
+    // 1. Ir directamente al carrito (que inicia vacío en una sesión limpia)
+    await page.goto('/cart.html');
+
+    // 2. Hacer clic en "Place Order" para abrir el modal de compra
+    await page.click('button:has-text("Place Order")');
+    await page.waitForSelector('#orderModal', { state: 'visible', timeout: 5000 });
+
+    // 3. Llenar los campos Name y Credit Card requeridos por el frontend
+    await page.fill('#name', 'Kevin Quispe');
+    await page.fill('#card', '123456789');
+
+    // 4. Hacer clic en "Purchase" (Comprar)
+    await page.click('button:has-text("Purchase")');
+
+    // 5. Verificar que la compra de un carrito vacío ($0 USD) se procesa de forma exitosa
+    // Esto demuestra el BUG-003, ya que comercialmente no se debe permitir la compra de $0 sin productos.
+    const purchaseConfirmation = page.locator('h2:has-text("Thank you for your purchase!")');
+    await expect(purchaseConfirmation).toBeVisible({ timeout: 10000 });
+
+    // 6. Cerrar el modal de confirmación haciendo clic en "OK"
+    await page.click('button:has-text("OK")');
+  });
+
 });
